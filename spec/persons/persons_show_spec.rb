@@ -2,23 +2,17 @@
 require 'spec_helper'
 
 # @id = __('Заполни person_id в системе')
-# @server =
 
 describe 'Запрос ФЛ по НЕ существующему id.' do
-  let(:server) { 'http://localhost:3000' }
-
   before do
+    # @id = id = __('Необходимо задать НЕ существующий в системе person_id')
     @id = 1111
 
-    path = '%s/persons/%s.xml' % [server, @id]
-    uri = URI(path)
-    @res = Net::HTTP.get_response(uri)
-
-    # @doc = Nokogiri::XML(res.header.code)
+    rq = RequestToExt.new("persons/#{@id}.xml")
+    @res = rq.get()
   end
 
   subject { @res.header.code }
-  # subject { @doc.xpath('//person') }
 
   it 'Не переданы ' do
     id = 4
@@ -26,24 +20,18 @@ describe 'Запрос ФЛ по НЕ существующему id.' do
   end
 end
 
-
 describe 'Запрос ФЛ по существующему id.' do
-  let(:server) { 'http://localhost:3000' }
-
   before do
+    # @id = id = __('Необходимо задать существующий в системе person_id')
     @id = 1
-    path = '%s/persons/%s.xml' % [server, @id]
-    uri = URI(path)
-    res = Net::HTTP.get_response(uri)
 
-
-    @doc = Nokogiri::XML(res.body)
+    rq = RequestToExt.new("persons/#{@id}.xml")
+    @doc = rq.get_xml()
   end
 
   subject { @doc.xpath('//person') }
 
   it 'Не переданы ' do
-    id = 4
     should have_tag('id').with_value(@id)
   end
 end

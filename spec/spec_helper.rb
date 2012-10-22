@@ -5,6 +5,10 @@ Bundler.require(:default)
 # require 'open-uri'
 require 'net/http'
 
+APP_CONFIG = YAML.load_file("config/config.yml")['defaults']
+
+require 'support/request_to_ext.rb'
+
 Object.class_eval do
   def __(text)
     raise text
