@@ -12,10 +12,9 @@ describe 'Запрос ФЛ по НЕ существующему id.' do
     @res = rq.get()
   end
 
-  subject { @res.header.code }
+  subject { @res.code }
 
-  it 'Не переданы ' do
-    id = 4
+  it 'Статус 404 ' do
     should == '404'
   end
 end
@@ -26,12 +25,17 @@ describe 'Запрос ФЛ по существующему id.' do
     @id = 1
 
     rq = RequestToExt.new("persons/#{@id}.xml")
-    @doc = rq.get_xml()
+    @res = rq.get()
+    @doc = rq.parse_xml(@res.body)
   end
 
   subject { @doc.xpath('//person') }
 
-  it 'Не переданы ' do
+  it 'Найден тот же id' do
     should have_tag('id').with_value(@id)
+  end
+
+  it 'Статус 200' do
+    @res.code.should == '200'
   end
 end

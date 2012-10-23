@@ -7,3 +7,5 @@ gem 'guard-spork', :require => false
 gem 'nokogiri'
 gem 'guard-rspec', :require => false
 gem 'fuubar', :require => false
+gem 'rest-client'
+gem 'russian'

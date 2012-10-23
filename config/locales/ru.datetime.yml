@@ -1,0 +1,7 @@
+ru:
+  date:
+    formats:
+      xml: "%Y-%m-%d"
+  time:
+    formats:
+      xml: "%Y-%m-%d"

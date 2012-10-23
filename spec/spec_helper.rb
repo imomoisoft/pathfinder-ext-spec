@@ -20,7 +20,11 @@ Spork.prefork do
 
   # Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
-  # I18n.locale = :ru
+  I18n.load_path += Dir[Pathname.new('.').join('config', 'locales', '*.{rb,yml}').to_s]
+
+  # I18n.load_path = ['en.yml', 'it.yml']
+
+  I18n.locale = :ru
 
   RSpec.configure do |config|
     config.treat_symbols_as_metadata_keys_with_true_values = true
