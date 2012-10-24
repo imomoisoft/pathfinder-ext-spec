@@ -1,32 +1,54 @@
 # encoding: utf-8
 require 'spec_helper'
 
-describe 'Запрос информации о документах удостоверяющих личность.' do
+describe 'Запрос информации о документах удостоверяющих личность.', :broken => false do
 
-  let(:person_id) { 1 }
-  # let(:person_id) { __('Необходимо задать существующий в системе person_id') }
-  let(:identity_cards_count) { 3 }
-  # let(:uri) { "persons/#{person_id}/identity_cards.xml" }
 
-  let(:true_serie) { '7200' }
-  let(:true_number) { '900200' }
+  let(:person_id) { __('Необходимо задать существующий в системе person_id') }
+  let(:identity_cards_count) { __('Необходимо задать количестов возвращаемых документов') }
+  let(:true_serie) { __('Необходимо задать серию') }
+  let(:true_number) { __('Необходимо задать номер') }
 
-  let(:true_first_name) { 'Георгий' }
-  let(:true_last_name) { 'Фрунзе' }
-  let(:true_middle_name) { 'Васильевич' }
+  let(:true_first_name) { __('Необходимо задать имя') }
+  let(:true_last_name) { __('Необходимо задать фамилию') }
+  let(:true_middle_name) { __('Необходимо задать отчество') }
 
-  let(:true_first_name_latin) { 'Georgiy' }
-  let(:true_last_name_latin) { 'Frunze' }
+  let(:true_first_name_latin) { __('Необходимо задать имя латинскими буквами') }
+  let(:true_last_name_latin) { __('Необходимо задать фамилию латинскими буквами') }
 
-  let(:true_issue_date) { DateTime.new(2011, 5, 11) }
-  let(:true_issuer) { 'Организация выдающая водительские удостоверения' }
-  let(:true_issuer_code) { '12345' }
-  let(:true_issuer_region_code) { '770000000000' }
+  let(:true_issue_date) { __('Необходимо задать дату выдачи') }
+  let(:true_issuer) { __('Необходимо задать кем выдан') }
+  let(:true_issuer_code) { __('Необходимо задать код-подразделения') }
+  let(:true_issuer_region_code) { __('Необходимо задать КЛАДР-код подразделения выдачи') }
 
-  let(:true_reason) { 'Причина выдачи документа' }
-  let(:true_state) { 'Текущий статус документа' }
-  let(:true_sex_title) { 'М' }
-  let(:true_birth_place) { 'Место рождения гражданина РФ' }
+  let(:true_reason) { __('Необходимо задать причину выдачи') }
+  let(:true_state) { __('Необходимо задать статус документа') }
+  let(:true_sex_title) { __('Необходимо задать пол') }
+  let(:true_birth_place) { __('Необходимо задать дату рождения') }
+
+  # Пример инициализации переменных
+  #
+  # let(:person_id) { 1 }
+  # let(:identity_cards_count) { 3 }
+  # let(:true_serie) { '7200' }
+  # let(:true_number) { '900200' }
+
+  # let(:true_first_name) { 'Георгий' }
+  # let(:true_last_name) { 'Фрунзе' }
+  # let(:true_middle_name) { 'Васильевич' }
+
+  # let(:true_first_name_latin) { 'Georgiy' }
+  # let(:true_last_name_latin) { 'Frunze' }
+
+  # let(:true_issue_date) { DateTime.new(2011, 5, 11) }
+  # let(:true_issuer) { 'Организация выдающая водительские удостоверения' }
+  # let(:true_issuer_code) { '12345' }
+  # let(:true_issuer_region_code) { '770000000000' }
+
+  # let(:true_reason) { 'Причина выдачи документа' }
+  # let(:true_state) { 'Текущий статус документа' }
+  # let(:true_sex_title) { 'М' }
+  # let(:true_birth_place) { 'Место рождения гражданина РФ' }
 
   before do
     rq = RequestToExt.new("persons/#{person_id}/identity_cards.xml")
