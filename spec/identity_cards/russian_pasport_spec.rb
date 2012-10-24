@@ -20,11 +20,11 @@ describe 'Запрос информации о документах удосто
   let(:true_issuer_code) { '12345' }
   let(:true_issuer_region_code) { '770000000000' }
 
-  let(:true_reason) { 'Причина выдачи' }
-  let(:true_state) { 'Статус документа' }
+  let(:true_reason) { 'Причина выдачи документа' }
+  let(:true_state) { 'Текущий статус документа' }
   let(:true_sex_id) { '1' }
   let(:true_sex_title) { 'М' }
-  let(:true_birth_place) { '770000000000' }
+  let(:true_birth_place) { 'Место рождения гражданина РФ' }
   let(:true_birth_date) { DateTime.new(1955, 3, 1) }
 
   before do
