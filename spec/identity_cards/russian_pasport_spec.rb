@@ -1,7 +1,7 @@
 # encoding: utf-8
 require 'spec_helper'
 
-describe 'Запрос информации о документах удостоверяющих личность.' do
+describe 'Запрос информации о документах удостоверяющих личность.', :broken => false do
 
   let(:person_id) { 1 }
   # let(:person_id) { __('Необходимо задать существующий в системе person_id') }
