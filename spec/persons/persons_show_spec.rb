@@ -7,8 +7,8 @@ describe 'Тестирование реализации сервиса get /pers
 
   describe 'Запрос ФЛ по НЕ существующему id.' do
     before do
-      # @id = id = __('Необходимо задать НЕ существующий в системе person_id')
-      @id = 1111
+      @id = id = __('Необходимо задать НЕ существующий в системе person_id')
+      # @id = URI.escape('ПАСПОРТ РОССИИ|0404|064169')
 
       rq = RequestToExt.new("persons/#{@id}.xml")
       @res = rq.get()

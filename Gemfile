@@ -9,3 +9,4 @@ gem 'guard-rspec', :require => false
 gem 'fuubar', :require => false
 gem 'rest-client'
 gem 'russian'
+gem 'rest-client'
