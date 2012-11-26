@@ -7,7 +7,7 @@ describe 'Тестирование реализации сервиса get /pers
 
   describe 'Запрос ФЛ по НЕ существующему id.' do
     before do
-      @id = id = __('Необходимо задать НЕ существующий в системе person_id')
+      @id = __('Необходимо задать НЕ существующий в системе person_id')
       # @id = URI.escape('ПАСПОРТ РОССИИ|0404|064169')
 
       rq = RequestToExt.new("persons/#{@id}.xml")
@@ -17,7 +17,7 @@ describe 'Тестирование реализации сервиса get /pers
     subject { @res.code }
 
     it 'Статус 404 ' do
-      should == '404'
+      should == 404
     end
   end
 
@@ -33,12 +33,12 @@ describe 'Тестирование реализации сервиса get /pers
 
     subject { @doc.xpath('//person') }
 
-    it 'Найден тот же id' do
-      should have_tag('id').with_value(@id)
+    it 'Статус 200' do
+      @res.code.should == 200
     end
 
-    it 'Статус 200' do
-      @res.code.should == '200'
+    it 'Найден тот же id' do
+      should have_tag('id').with_value(@id)
     end
   end
 end
